@@ -39,7 +39,7 @@ resource "digitalocean_droplet" "edge1-commie-cafe" {
       "git clone https://github.com/cagyirey/osp-edge.git",
       "cd osp-edge",
       "chmod +x setup.sh",
-      "sudo bash setup.sh <<< '70.64.32.228'"
+      "sudo ./setup.sh '70.64.32.228'"
     ]
   }
 }

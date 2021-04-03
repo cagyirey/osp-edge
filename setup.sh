@@ -38,11 +38,12 @@ popd
 sudo cp -R ./nginx/* /usr/local/nginx/conf/
 
 # Setup Configuration with IP
-sed -i "s/::IP_ADDR::/$1/g" /usr/local/nginx/conf/nginx.conf
+sed -i "s/::IP_ADDR::/$1/g" /usr/local/nginx/conf/servers/osp-edge-servers.conf
+sed -i "s/::IP_ADDR::/$1/g" /usr/local/nginx/conf/services/osp-edge-rtmp.conf
 
 # Enable SystemD
 
-sudo cp nginx-osp.service /etc/systemd/system/osp-edge.service
+sudo cp osp-edge.service /etc/systemd/system/osp-edge.service
 sudo systemctl daemon-reload
 sudo systemctl enable osp-edge.service
 
