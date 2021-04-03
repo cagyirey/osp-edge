@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cwd=$PWD
+
 if [ -z "$1" ]; then
         echo "Usage: setup.sh <hostname or ip address>"
         exit 1
@@ -11,7 +13,7 @@ sudo apt-get update
 sudo apt-get install build-essential libpcre3 libpcre3-dev libssl-dev unzip git ffmpeg -y
 
 # Build Nginx with RTMP module
-if pushd /tmp
+if cd /tmp
 then
         sudo wget "http://nginx.org/download/nginx-1.17.3.tar.gz"
         sudo wget "https://github.com/arut/nginx-rtmp-module/archive/v1.2.1.zip"
@@ -32,7 +34,7 @@ else
         exit 1
 fi
 
-popd
+cd $cwd
 
 # Grab Configuration
 sudo cp -R ./nginx/* /usr/local/nginx/conf/
